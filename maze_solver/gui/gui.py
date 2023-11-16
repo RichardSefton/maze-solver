@@ -61,5 +61,5 @@ class GUI:
         self.root.mainloop()
 
     def generate_maze_action(self):
-        self.maze = generate.generate_maze(50, 50)
+        self.maze = generate.generate_maze(75, 75)
         self.draw_maze()

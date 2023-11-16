@@ -33,15 +33,15 @@ def carve_maze(width, height):
     maze[exit_y, exit_x] = 1  # Set the exit point
 
     recursive_backtracking(entry_x, entry_y)
-    maze = border(height, width, entry_y, maze)
+    maze = border(height, width, entry_y, exit_y, maze)
     return maze
 
 #Maze needs a border to show a clearly defined entry and exit point. 
-def border(height, width, entry_point, maze):
-    border_walls = np.zeros(shape=(height+1, width+1), dtype=int)
+def border(height, width, entry_point, exit_point, maze):
+    border_walls = np.zeros(shape=(height+2, width+2), dtype=int)
     border_walls[entry_point+1, 0] = 1;
-    # border_walls[exit_point+1, width-1] = 1;
-    border_walls[1:1+maze.shape[0],1:1+maze.shape[1]] = maze
+    border_walls[exit_point+1, width+1] = 1;
+    border_walls[1:border_walls.shape[0]-1,1:border_walls.shape[1]-1] = maze
     return border_walls
 
 def print_maze(maze):
