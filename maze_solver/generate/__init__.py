@@ -1,1 +1,1 @@
-from .generate import generate_maze_action
+from .generate import generate_maze
